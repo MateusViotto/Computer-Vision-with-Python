@@ -16,7 +16,7 @@ while True:
 
     imgRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB) #Converte a imagem para RGB
     results = pose.process(imgRGB) #processa a pose
-    #print(results.pose_landmarks)
+    print(results.pose_landmarks)
 
     if results.pose_landmarks:
         mpDraw.draw_landmarks(img, results.pose_landmarks, mpPose.POSE_CONNECTIONS) #Desenha a pose
@@ -26,8 +26,8 @@ while True:
             #print(id, lm)
             cx, cy = int(lm.x*w), int(lm.y*h) #Calcula a posição do landmark
 
-            if id == 0:  # Desenha um circulo rosa no landmark de id 0, checar a imagem dos landmaks caso haja duvida
-                cv2.circle(img, (cx, cy), 25, (255, 0, 255), cv2.FILLED)
+            #if id == 0:  # Desenha um circulo rosa no landmark de id 0, checar a imagem dos landmaks caso haja duvida
+             #   cv2.circle(img, (cx, cy), 25, (255, 0, 255), cv2.FILLED)
 
     # Calcula o FPS
     cTime = time.time()

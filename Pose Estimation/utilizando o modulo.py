@@ -1,20 +1,20 @@
 import cv2
 import time
-import DetecMaoModulo as detecMao
+import modulo as detpose
 
 pTime = 0
 cTime = 0
 cap = cv2.VideoCapture(0)  # Declara a webcam, o número indica qual webcam é, pode ser 0, 1...
-detector = detecMao.handDetector()
+detector = detpose.poseDetector()
 
 while True:
     success, img = cap.read()  # lê a imagem da webcam
 
-    img = detector.findHands(img, draw=False)
-    lmList = detector.findPosition(img, draw=False)
+    img = detector.findPose(img)
+    lmList = detector.findPosition(img)
 
-    if len(lmList) != 0:
-        print(lmList[0])    #Printa a posição do landmark 0
+   # if len(lmList) != 0:
+      #  print(lmList[0])    #Printa a posição do landmark 0
     # Calcula o FPS
     cTime = time.time()
     fps = 1 / (cTime - pTime)
